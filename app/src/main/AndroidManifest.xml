@@ -9,11 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="es.developer.achambi.ipsych.ChatActivity">
+            android:name="es.developer.achambi.ipsych.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name="es.developer.achambi.ipsych.chat.ChatActivity">
         </activity>
     </application>
 </manifest>

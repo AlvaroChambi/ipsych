@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ipsych</string>
+    <string name="login_activity_title">Login</string>
+    <string name="chat_activity_title">Chat</string>
 </resources>
