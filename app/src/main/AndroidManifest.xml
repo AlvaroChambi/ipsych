@@ -19,5 +19,6 @@
         <activity
             android:name="es.developer.achambi.ipsych.chat.ChatActivity">
         </activity>
+        <activity android:name=".profile.ProfileActivity"></activity>
     </application>
 </manifest>
