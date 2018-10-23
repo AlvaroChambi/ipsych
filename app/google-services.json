@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "714532342858",
+    "firebase_url": "https://ipsych-d5083.firebaseio.com",
+    "project_id": "ipsych-d5083",
+    "storage_bucket": "ipsych-d5083.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714532342858:android:d5f61822a59dd38d",
+        "android_client_info": {
+          "package_name": "es.developer.achambi.ipsych"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714532342858-lrtqcboadmll2k9sbupua953k46g9ha9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.developer.achambi.ipsych",
+            "certificate_hash": "5ed9748e656469ae10fefeff787a622082eb431f"
+          }
+        },
+        {
+          "client_id": "714532342858-bdpastjafgo9q6v4ejlthrnqksunvf5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYEFDtkKneylj87pBXu5GNM0xuBZ4X2nk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714532342858-bdpastjafgo9q6v4ejlthrnqksunvf5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
