@@ -7,11 +7,11 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import es.developer.achambi.coreframework.ui.BaseFragment;
+import es.developer.achambi.ipsych.NavigationFragment;
 import es.developer.achambi.ipsych.R;
 import es.developer.achambi.ipsych.login.LoginActivity;
 
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends NavigationFragment {
     @Override
     public int getLayoutResource() {
         return R.layout.profile_fragment_layout;
@@ -34,5 +34,10 @@ public class ProfileFragment extends BaseFragment {
                     }
                 }
         );
+    }
+
+    @Override
+    public int getTitleText() {
+        return R.string.profile_activity_title;
     }
 }

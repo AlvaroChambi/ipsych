@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="es.developer.achambi.ipsych.login.LoginActivity">
+            android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,5 +20,6 @@
             android:name="es.developer.achambi.ipsych.chat.ChatActivity">
         </activity>
         <activity android:name=".profile.ProfileActivity"></activity>
+        <activity android:name=".NavigationActivity"></activity>
     </application>
 </manifest>

@@ -5,9 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import es.developer.achambi.coreframework.ui.BaseFragment;
+import es.developer.achambi.ipsych.NavigationFragment;
 import es.developer.achambi.ipsych.R;
 
-public class ChatFragment extends BaseFragment {
+public class ChatFragment extends NavigationFragment {
     @Override
     public int getLayoutResource() {
         return R.layout.base_activity;
@@ -16,5 +17,10 @@ public class ChatFragment extends BaseFragment {
     @Override
     public void onViewSetup(View view, @Nullable Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    public int getTitleText() {
+        return R.string.chat_activity_title;
     }
 }

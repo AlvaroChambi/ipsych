@@ -4,22 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 import java.util.List;
 
 import es.developer.achambi.coreframework.ui.BaseFragment;
+import es.developer.achambi.ipsych.NavigationActivity;
 import es.developer.achambi.ipsych.R;
-import es.developer.achambi.ipsych.chat.ChatActivity;
-import es.developer.achambi.ipsych.profile.ProfileActivity;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -37,7 +33,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         loginButton.setOnClickListener(this);
 
         if( FirebaseAuth.getInstance().getCurrentUser() != null ) {
-            startActivity( ProfileActivity.getStartIntent( getActivity() ) );
+            startActivity( new Intent(getActivity(), NavigationActivity.class) );
+            getActivity().finish();
         }
     }
 
@@ -48,7 +45,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             IdpResponse response = IdpResponse.fromResultIntent( data );
 
             if( resultCode == RESULT_OK ) {
-                startActivity(ProfileActivity.getStartIntent( getActivity() ) );
+                startActivity( new Intent(getActivity(), NavigationActivity.class) );
                 getActivity().finish();
             } else {
                 if( response != null ){
