@@ -7,14 +7,29 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import es.developer.achambi.coreframework.ui.BaseFragment;
+import es.developer.achambi.coreframework.ui.Presenter;
+import es.developer.achambi.ipsych.NavigationFragment;
 import es.developer.achambi.ipsych.R;
 import es.developer.achambi.ipsych.login.LoginActivity;
 
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends NavigationFragment implements View.OnClickListener {
+    public static ProfileFragment newInstance() {
+        return new ProfileFragment();
+    }
+
+    private ProfilePresenter presenter;
+
     @Override
     public int getLayoutResource() {
         return R.layout.profile_fragment_layout;
+    }
+
+    @Override
+    public Presenter setupPresenter() {
+        if( presenter == null ) {
+            presenter = new ProfilePresenter();
+        }
+        return presenter;
     }
 
     @Override
@@ -22,17 +37,27 @@ public class ProfileFragment extends BaseFragment {
         View logoutButton = view.findViewById(R.id.profile_logout_button);
         TextView profileName = view.findViewById(R.id.profile_user_name_text);
 
-        profileName.setText( FirebaseAuth.getInstance().getCurrentUser().getDisplayName() );
+        profileName.setText( presenter.getProfileName() );
 
-        logoutButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(LoginActivity.getStartIntent( getActivity() ) );
-                        getActivity().finish();
-                    }
-                }
-        );
+        logoutButton.setOnClickListener(this);
+    }
+
+    @Override
+    public int getTitleResource() {
+        return R.string.profile_activity_title;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if( view.getId() == R.id.profile_logout_button ) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(LoginActivity.getStartIntent( getActivity() ) );
+            getActivity().finish();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }

@@ -31,6 +31,7 @@
         android:layout_marginTop="8dp"
         tools:text="UserName"
         android:gravity="center"
+        android:freezesText="true"
         style="@style/secondary_text_with_background_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
