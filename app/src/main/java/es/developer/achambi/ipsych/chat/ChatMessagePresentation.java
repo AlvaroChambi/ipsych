@@ -1,6 +1,9 @@
 package es.developer.achambi.ipsych.chat;
 
+import android.content.Context;
+
 import es.developer.achambi.coreframework.ui.presentation.SearchListData;
+import es.developer.achambi.ipsych.DateFormatUtil;
 import es.developer.achambi.ipsych.R;
 
 public class ChatMessagePresentation implements SearchListData {
@@ -17,6 +20,22 @@ public class ChatMessagePresentation implements SearchListData {
         this.timestamp = timestamp;
         this.message = message;
         this.ownMessage = ownMessage;
+    }
+
+    public static class Builder {
+        public static ChatMessagePresentation buildPresentation( Context context,
+                                                                 String currentUser,
+                                                                 ChatMessage message ) {
+            return new ChatMessagePresentation(
+                    (int)message.getId(),
+                    message.getUser(),
+                    DateFormatUtil.formatChatTimestamp(
+                            context.getResources().getConfiguration().locale,
+                            message.getMessageDate() ),
+                    message.getMessage(),
+                    currentUser.equals( message.getUser() )
+            );
+        }
     }
 
     @Override

@@ -5,4 +5,5 @@
     <string name="profile_activity_title">Profile</string>
     <string name="user_logout_text">Logout</string>
     <string name="user_login_text">Login</string>
+    <string name="chat_message_input_hint">Type a message</string>
 </resources>
