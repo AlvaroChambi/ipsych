@@ -8,12 +8,12 @@ import android.support.v7.app.AppCompatActivity;import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MenuItem;
 
-import es.developer.achambi.ipsych.chat.ChatFragment;
+import es.developer.achambi.ipsych.home.HomeFragment;
 import es.developer.achambi.ipsych.profile.ProfileFragment;
 
 public class NavigationActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
-    private static final String CHAT_FRAGMENT_TAG = "chat_fragment_tag";
+    private static final String HOME_FRAGMENT_TAG = "home_fragment_tag";
     private static final String PROFILE_FRAGMENT_TAG = "profile_fragment_tag";
 
     @Override
@@ -21,7 +21,7 @@ public class NavigationActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_activity_layout);
         if( savedInstanceState == null ) {
-            replaceFragment( ChatFragment.newInstance(), CHAT_FRAGMENT_TAG );
+            replaceFragment( HomeFragment.newInstance(), HOME_FRAGMENT_TAG );
         }
         BottomNavigationView navigationView = findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
@@ -37,8 +37,8 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch ( item.getItemId() ) {
-            case R.id.navigation_menu_chat:
-                replaceFragment( ChatFragment.newInstance(), CHAT_FRAGMENT_TAG );
+            case R.id.navigation_menu_home:
+                replaceFragment( HomeFragment.newInstance(), HOME_FRAGMENT_TAG );
                 break;
             case R.id.navigation_menu_profile:
                 replaceFragment( ProfileFragment.newInstance(), PROFILE_FRAGMENT_TAG );

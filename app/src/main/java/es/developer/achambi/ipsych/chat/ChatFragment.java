@@ -1,22 +1,33 @@
 package es.developer.achambi.ipsych.chat;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 import es.developer.achambi.coreframework.ui.BaseSearchListFragment;
+import es.developer.achambi.coreframework.ui.Presenter;
 import es.developer.achambi.coreframework.ui.SearchAdapterDecorator;
 import es.developer.achambi.ipsych.R;
 
-public class ChatFragment extends BaseSearchListFragment {
+public class ChatFragment extends BaseSearchListFragment implements ValueEventListener {
     private ChatAdapter adapter;
+    private ChatPresenter presenter;
+    private TextView chatEditText;
 
     @Nullable
     @Override
@@ -25,26 +36,39 @@ public class ChatFragment extends BaseSearchListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    @Override
+    public int getLayoutResource() {
+        return R.layout.chat_fragment_layout;
+    }
+
+    @Override
+    public Presenter setupPresenter() {
+        if( presenter == null ) {
+            presenter = new ChatPresenter();
+        }
+        return presenter;
+    }
+
     public static ChatFragment newInstance() {
         return new ChatFragment();
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onViewSetup(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewSetup(view, savedInstanceState);
 
-        ArrayList<ChatMessagePresentation> data = new ArrayList<>();
-        data.add( new ChatMessagePresentation( 0, "pepe", "12-Dic",
-                "gflkdajgfkldgjfdlsñgjfdklsgjfsdlgjfdskjgsdf", true ) );
-        data.add( new ChatMessagePresentation( 1, "aaaa", "12-Dic",
-                "gflkdajgfkldgjfdlsñgjfdklsgjfsdlgjfdskjgsdf", false ) );
-        data.add( new ChatMessagePresentation( 2, "pepe", "12-Dic",
-                "gflkdajgfkldgjfdlsñgjfdklsgjfsdlgjfdskjgsdf", true ) );
-        data.add( new ChatMessagePresentation( 3, "aaaa", "12-Dic",
-                "gflkdajgfkldgjfdlsñgjfdklsgjfsdlgjfdskjgsdf", false ) );
+        view.findViewById( R.id.chat_send_button ).setOnClickListener( this );
+        chatEditText = view.findViewById( R.id.chat_edit_text );
+        FirebaseDatabase.getInstance().getReference().addValueEventListener(this);
+    }
 
-        adapter.setData( data );
-        presentAdapterData();
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        if( v.getId() == R.id.chat_send_button ) {
+            presenter.pushChatMessage( chatEditText.getText().toString() );
+            chatEditText.setText("");
+        }
     }
 
     @Override
@@ -57,6 +81,24 @@ public class ChatFragment extends BaseSearchListFragment {
 
     public int getTitleResource() {
         return R.string.chat_activity_title;
+    }
+
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        ArrayList<ChatMessagePresentation> chatMessages = new ArrayList<>();
+        for (DataSnapshot item : dataSnapshot.getChildren()) {
+            chatMessages.add( ChatMessagePresentation.Builder.buildPresentation(
+                    getActivity(),
+                    FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                    item.getValue(ChatMessage.class) ) );
+        }
+        adapter.setData( chatMessages );
+        presentAdapterData();
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+        Log.e(ChatFragment.class.getName(), databaseError.getMessage());
     }
 
     private class ChatMessageViewHolder extends RecyclerView.ViewHolder {
