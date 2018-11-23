@@ -1,5 +1,6 @@
 package es.developer.achambi.ipsych.profile;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,6 +16,10 @@ public class ProfilePresenter extends Presenter {
             name = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         }
         return name;
+    }
+
+    public Uri getPhotoUrl() {
+        return FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl();
     }
 
     @Override
