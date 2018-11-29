@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "714532342858-lrtqcboadmll2k9sbupua953k46g9ha9.apps.googleusercontent.com",
+          "client_id": "714532342858-oh5tjjqqko1retr1ok397opqg7cmstcc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "es.developer.achambi.ipsych",
             "certificate_hash": "5ed9748e656469ae10fefeff787a622082eb431f"
+          }
+        },
+        {
+          "client_id": "714532342858-t4a39c54fccmkjjet6lcf0v10t0j86df.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.developer.achambi.ipsych",
+            "certificate_hash": "d4f3fc872a6b6e7e81405ad6756b700e75347c12"
           }
         },
         {
