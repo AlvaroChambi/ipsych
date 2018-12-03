@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MenuItem;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import es.developer.achambi.ipsych.home.HomeFragment;
 import es.developer.achambi.ipsych.profile.ProfileFragment;
 
@@ -20,6 +23,9 @@ public class NavigationActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_activity_layout);
+        FirebaseApp.initializeApp(this);
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        FirebaseMessaging.getInstance().subscribeToTopic("messages");
         if( savedInstanceState == null ) {
             replaceFragment( HomeFragment.newInstance(), HOME_FRAGMENT_TAG );
         }

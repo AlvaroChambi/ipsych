@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "714532342858-io21i2jfp6rs9q9a9lo6blvp62pivtqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.developer.achambi.ipsych",
+            "certificate_hash": "0b2946f29fe710d2fba7d9616ecc42d854aef506"
+          }
+        },
+        {
           "client_id": "714532342858-bdpastjafgo9q6v4ejlthrnqksunvf5a.apps.googleusercontent.com",
           "client_type": 3
         }
