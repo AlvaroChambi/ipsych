@@ -12,3 +12,4 @@ buildSrc/.gradle
 /.idea
 buildSrc/buildSrc.iml
 ipsych.iml
+app/release
