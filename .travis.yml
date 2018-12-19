@@ -23,7 +23,8 @@ deploy:
   provider: releases
   api_key:
     secure: UGAyESQ6t4jQuX7AL7QapuCdn0BtnB/n9GIFVj3WYBe9RAEAMY2ofmjrpDvdTNgbabF035GBd6zxGIYW+3IHAaJpdddJzhys1qM29xgFV4utGjVQMsTgfX2Sdt+1RyLrDF/kz6WnqeL+UAybWWxtDjwICKlR00ddt3fjTab4R0PmyM5msdfAxMY1Apt9N/rNR7Y48Q7Mwg0fhX89fdZaub4da73KLMAmIxrFAQqzXeCj4bx9r9VrucwmU7XLvpaJerCAGQZJ9PjMhFlcQTdw2Fe2P5KGI6MLeEna2VJmz78PKcGd6wMZ1cnxqWbI8A/0sR5JdOrCBD+SkPJFjZ0sTEwhtDL6agnwG3MJOHYWseXcD56/uEqQ4GjYkUwhhEwdIedm1A5EsNrWI12a5Qk08cJQQOzAdsZxic8Jv1PRDO+48GIoSRGKFZmiJVoXzGS0LyHlcsucV+FLS0j+rC+pX0OI9vVER/UffSccmYk46d5ifqnUv2IOd8qzRzveIwn+f3SDKvXRnOQVgGAXbqr3GBiIxOI8iZiiwy5aOlYk2BTllOSHgh59Oy7aX2ZvfOPf1/qzF9utz47jEVUw72xNDs8Dqj9XL8j1CYEkR2gxxmBW4iNW3BP1SoXxf5NomdijwiSD8aHHWvX0zsl6Wt6Lt07DDxRNZY5k5N5SyGWkhsw=
-  file: app/release/app-release.apk
+  file_glob: true
+  file: /home/travis/build/AlvaroChambi/ipsych/app/build/outputs/apk/release/*
   skip_cleanup: true
   on:
     tags: true
