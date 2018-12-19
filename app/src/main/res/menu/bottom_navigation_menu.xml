@@ -5,7 +5,7 @@
         android:id="@+id/navigation_menu_home"
         android:enabled="true"
         android:icon="@drawable/baseline_home_black_18dp"
-        android:title="@string/chat_activity_title"
+        android:title="@string/home_activity_title"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/navigation_menu_profile"
