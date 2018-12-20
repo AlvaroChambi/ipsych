@@ -21,7 +21,6 @@
         <activity
             android:name="es.developer.achambi.ipsych.chat.ChatActivity">
         </activity>
-        <activity android:name=".profile.ProfileActivity"></activity>
         <activity android:name=".NavigationActivity"></activity>
         <activity android:name=".info.InfoActivity"></activity>
     </application>
